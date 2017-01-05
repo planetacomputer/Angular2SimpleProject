@@ -3,7 +3,7 @@
 import {bootstrap} from 'angular2/platform/browser';
 
 /* Importing AppComponent created in app.component.ts file */
-import {AppComponent} from './app.component';
+import {TaskListComponent} from './taskList.component';
 
 /* Bootstrapping AppComponent */
-bootstrap(AppComponent);
+bootstrap(TaskListComponent);
