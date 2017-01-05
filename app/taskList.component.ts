@@ -3,29 +3,29 @@
 import {Component} from 'angular2/core'
  
  
-/* create  TaskList class decorator */
-/* define selector */
-/* define HTML for template */
-/* print heading variable inside template */
 @Component ({
 	selector: 'task-list',
-	template: '<h1>{{heading1}}</h1> <h2>{{heading2}}</h2> <h3>{{heading3}}</h3>'
+	template: '<h1>{{heading}}</h1> <br/>Type Heading: <input type="text" [(ngModel)]="heading">',
+	styles: [`
+				h1 {
+					font-size: 20px;
+					padding: 10px 5px;
+					color: #fff;
+					background: #000
+				}
+			`]
 })
- 
  
  
 export class TaskListComponent{
  
 	/* define heading variables */
  
-	private heading1
-	protected heading2
-	public heading3
+	private heading
  
 	constructor(){
  
-		this.heading1 = "Task List heading 1"
-		this.heading2 = "Task List heading 2"
-		this.heading3 = "Task List heading 3"
+		this.heading;
 	}
+ 
 }
