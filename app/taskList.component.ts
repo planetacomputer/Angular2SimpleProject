@@ -2,36 +2,39 @@
  
 import {Component} from 'angular2/core'
 
-
-/* Import MyTaskList */
-import {MyTaskListComponent} from './myTaskList.component';
+/* Import service */
+import {TaskService} from './task.service'
+/* import OnInit */
+import {OnInit} from 'angular2/core'
  
 @Component ({
 	selector: 'task-list',
-	template: `<h1>{{heading}}</h1>
-				<my-task-list></my-task-list>
-				`,
-	styles: [`
-				h1 {
-					font-size: 20px;
-					padding: 10px 5px;
-					color: #fff;
-					background: #000FFF
-				}
-			`],
-	directives: [MyTaskListComponent]
+	templateUrl: 'app/task-list.html',
+	providers: [TaskService]
 })
  
+
+/* create TaskList class */
+/* Export TaskList Class */ 
+export class TaskListComponent implements OnInit{
+	private tasks
+	private taskTitle = ''
  
-export class TaskListComponent{
- 
-	/* define heading variables */
- 
-	private heading;
- 
-	constructor(){
- 
-		this.heading = "Hello";
+	constructor(private taskService:TaskService){
+		this.tasks = []
+	}
+
+	ngOnInit(){
+		this.tasks = this.taskService.getTasks()
 	}
  
+	addTask(taskTitle){
+		if(taskTitle !='' && taskTitle){
+			this.taskService.addTask(taskTitle)
+		}
+		this.taskTitle = ''
+	}
+	deleteTask(taskIndex){
+		this.taskService.deleteTask(taskIndex);
+	}
 }

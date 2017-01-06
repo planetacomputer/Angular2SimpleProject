@@ -1,0 +1,19 @@
+<h1>Task List</h1>
+ 
+<table border="1">
+	<tr>
+		<td width="200">Title</td>
+		<td width="70">Delete</td>
+	</tr>
+	<tr *ngFor="#task of tasks; #i = index">
+		<td>{{task}}</td>
+		<td><input type="button" value="Delete" (click)="deleteTask(i);"></td>
+	</tr>
+ 
+</table>
+ 
+<br/>
+<br/>
+<p>Add Task</p>
+<input type="text" [(ngModel)]="taskTitle" placeholder="Task Title">
+<input type="button" value="Add" (click)="addTask(taskTitle)">
